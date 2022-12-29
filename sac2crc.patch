@@ -1,0 +1,25 @@
+ setup/sac2crc.pre.in | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/setup/sac2crc.pre.in b/setup/sac2crc.pre.in
+index 9d01eb7d4..32037fd92 100644
+--- a/setup/sac2crc.pre.in
++++ b/setup/sac2crc.pre.in
+@@ -401,11 +401,15 @@ TREE_DLLEXT      :=  "@SHARED_LIB_EXT@"
+ COMPILE_TREE     :=  "@CC@ @GENPIC@ @DEFS@ @RCCCFLAGS@ -O1 %tree_cflags% %sacincludes% -c -o %target% %source%"
+ LINK_TREE        :=  "@CC@ @LD_DYNAMIC@ %ldflags% %tree_ldflags% -o %target% %objects%"
+ 
+-LIB_OUTPUTDIR    :=  "${MODPATH_CONF}"
++LIB_OUTPUTDIR    :=  "~/.sac2c-modules/libexec"
+ LIBPATH          :=  ".:"
++                     "${MODPATH_CONF}:"
+                      "${RTPATH_CONF}:"
+-TREE_OUTPUTDIR   :=  "${TREEPATH_CONF}"
++                     "__LIB_STDLIB_PATH__:"
++TREE_OUTPUTDIR   :=  "~/.sac2c-modules/lib/modlibs"
+ TREEPATH         :=  ".:"
++                     "${TREEPATH_CONF}:"
++                     "__TREE_STDLIB_PATH__:"
+ IMPPATH          :=  ".:"
+                      "@STDLIB_SOURCES@/modules/structures:"
+                      "@STDLIB_SOURCES@/modules/numerical:"
